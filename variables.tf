@@ -9,6 +9,7 @@ variable "vpc_name" {
   default     = "cmtr-959pompn-01-vpc"
 }
 variable "subnets" {
+  description = "The name, cidr, availability zones to use for the subnets"
   type = map(object({
     name              = string
     availability_zone = string
