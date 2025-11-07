@@ -37,4 +37,5 @@ variable "subnets" {
 variable "ssh_key" {
   description = "Provides custom public SSH key."
   default     = ""
+  type        = string
 }
