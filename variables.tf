@@ -81,3 +81,55 @@ variable "bucket_name" {
   type        = string
   default     = "cmtr-959pompn-bucket-1762758358"
 }
+
+####################################
+# SG Variables with Type & Description
+####################################
+
+variable "allowed_ip_range" {
+  description = "list of IP address range for secure access"
+  type        = list(string)
+  default     = ["0.0.0.0"]
+}
+
+variable "ssh_security_group_name" {
+  description = "SSH Security Group name"
+  type        = string
+  default     = ""
+}
+
+variable "public_http_security_group_name" {
+  description = "Public HTTP Security Group name"
+  type        = string
+  default     = ""
+}
+
+variable "private_http_security_group_name" {
+  description = "Private HTTP Security Group name"
+  type        = string
+  default     = ""
+}
+
+variable "private_subnet_name" {
+  description = "Private Subnet name"
+  type        = string
+  default     = ""
+}
+
+variable "public_subnet_name" {
+  description = "Public Subnet name"
+  type        = string
+  default     = ""
+}
+
+variable "public_instance_id" {
+  description = "Public Instance Id"
+  type        = string
+  default     = ""
+}
+
+variable "private_instance_id" {
+  description = "Private Instance Id"
+  type        = string
+  default     = ""
+}
