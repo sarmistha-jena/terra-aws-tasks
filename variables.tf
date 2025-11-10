@@ -1,6 +1,6 @@
 variable "project_id" {
   type        = string
-  description = "Project id used for billing"
+  description = "Project identifier for tagging"
   default     = "cmtr-959pompn"
 }
 
@@ -130,6 +130,28 @@ variable "public_instance_id" {
 
 variable "private_instance_id" {
   description = "Private Instance Id"
+  type        = string
+  default     = ""
+}
+
+###############################################
+# Data Source Variables with Type & Description
+###############################################
+
+variable "aws_region" {
+  description = "AWS region for resources"
+  type        = string
+  default     = ""
+}
+
+variable "state_bucket" {
+  description = "S3 bucket name for remote state"
+  type        = string
+  default     = ""
+}
+
+variable "state_key" {
+  description = "S3 key path for remote state file"
   type        = string
   default     = ""
 }
