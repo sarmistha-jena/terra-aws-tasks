@@ -1,13 +1,21 @@
+variable "project_id" {
+  type        = string
+  description = "Project id used for billing"
+  default     = "cmtr-959pompn"
+}
+
 variable "vpc_cidr" {
   type        = string
   description = "The IP range to use for the VPC"
   default     = "10.10.0.0/16"
 }
+
 variable "vpc_name" {
   type        = string
   description = "The name to use for the VPC"
   default     = "cmtr-959pompn-01-vpc"
 }
+
 variable "subnets" {
   description = "The name, cidr, availability zones to use for the subnets"
   type = map(object({
@@ -38,4 +46,38 @@ variable "ssh_key" {
   description = "Provides custom public SSH key."
   default     = ""
   type        = string
+}
+
+####################################
+# IAM Variables with Type & Description
+####################################
+
+variable "iam_group_name" {
+  description = "The name of the IAM group to be created."
+  type        = string
+  default     = "cmtr-959pompn-iam-group"
+}
+
+variable "iam_policy_name" {
+  description = "The name of the custom IAM policy that grants S3 write permissions."
+  type        = string
+  default     = "cmtr-959pompn-iam-policy"
+}
+
+variable "iam_role_name" {
+  description = "The name of the IAM role to be assumed by EC2 instances."
+  type        = string
+  default     = "cmtr-959pompn-iam-role"
+}
+
+variable "iam_instance_profile_name" {
+  description = "The name of the IAM instance profile to associate with the EC2 role."
+  type        = string
+  default     = "cmtr-959pompn-iam-instance-profile"
+}
+
+variable "bucket_name" {
+  description = "The name of the S3 bucket to which the IAM policy grants write access."
+  type        = string
+  default     = "cmtr-959pompn-bucket-1762758358"
 }
