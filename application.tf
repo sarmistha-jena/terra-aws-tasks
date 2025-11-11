@@ -3,7 +3,7 @@ resource "aws_launch_template" "aws_launch_template_lt" {
   name          = var.aws_launch_template_name
   instance_type = "t3.micro"
   image_id      = "ami-09e6f87a47903347c"
-  #vpc_security_group_ids = [data.aws_security_group.ssh_sg.id, data.aws_security_group.http_sg.id]
+
   iam_instance_profile {
     name = var.iam_instance_profile_name
   }
@@ -27,6 +27,10 @@ resource "aws_launch_template" "aws_launch_template_lt" {
       Terraform = true
       Project   = var.project_id
     }
+  }
+  tags = {
+    Terraform = true
+    Project   = var.project_id
   }
 }
 
