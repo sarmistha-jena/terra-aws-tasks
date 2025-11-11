@@ -6,7 +6,4 @@ terraform {
       version = "6.19.0"
     }
   }
-  backend "local" {
-    path = "terraform.tfstate" # Optional: Specify a custom path for the state file
-  }
 }
