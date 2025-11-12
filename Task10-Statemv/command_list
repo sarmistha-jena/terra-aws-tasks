@@ -1,0 +1,26 @@
+pull - mv - push
+
+cd ../tf_code_2
+cd ../tf_code_1
+terraform init -backend-config='bucket=cmtr-959pompn-backend-bucket-1762935637' -backend-config='key=tf_code_1.tfstate' -backend-config='region=us-east-1'
+terraform state list
+cd ../tf_code_2
+terraform init -backend-config='bucket=cmtr-959pompn-backend-bucket-1762935637' -backend-config='key=tf_code_2.tfstate' -backend-config='region=us-east-1'
+terraform state list
+terraform state pull > ../tf_code_2.tfstate
+cd ../tf_code_1
+terraform state pull > ../tf_code_1.tfstate
+cd ..
+terraform state mv \\n  -state=tf_code_1/terraform.tfstate \\n  -state-out=tf_code_2/terraform.tfstate \\n  aws_iam_policy.custom_policy \\n  aws_iam_policy.custom_policy\n
+
+cd tf_code_1
+terraform state list
+terraform state push tf_code_1.tfstate
+terraform state list
+cd ../tf_code_2
+terraform state list
+terraform state push tf_code_2.tfstate
+terraform state list
+terraform plan
+cd ../tf_code_1
+terraform plan
