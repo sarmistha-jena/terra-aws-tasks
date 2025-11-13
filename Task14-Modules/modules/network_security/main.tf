@@ -94,12 +94,12 @@ resource "aws_security_group_rule" "allow_http_private" {
   description              = "Allow public servers to connect to the private"
 }
 
-# resource "aws_security_group_rule" "allow_icmp_private" {
-#   type                     = "ingress"
-#   from_port                = -1
-#   to_port                  = -1
-#   protocol                 = "icmp"
-#   source_security_group_id = aws_security_group.public_http_sg.id
-#   security_group_id        = aws_security_group.private_http_sg.id
-#   description              = "Allow public servers to connect to the private"
-# }
+resource "aws_security_group_rule" "allow_icmp_private" {
+  type                     = "ingress"
+  from_port                = -1
+  to_port                  = -1
+  protocol                 = "icmp"
+  source_security_group_id = aws_security_group.public_http_sg.id
+  security_group_id        = aws_security_group.private_http_sg.id
+  description              = "Allow public servers to connect to the private"
+}
