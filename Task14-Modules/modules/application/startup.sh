@@ -10,8 +10,6 @@ yum install -y aws-cli httpd jq
 systemctl enable httpd
 systemctl start httpd
 
-mkdir -p /var/www/html
-
 # Retrieve IMDSv2 token
 TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 
