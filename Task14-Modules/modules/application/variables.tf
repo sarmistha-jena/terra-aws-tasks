@@ -7,7 +7,7 @@ variable "project_id" {
 variable "aws_launch_template_name" {
   type        = string
   description = "Launch template name"
-  default     = ""
+  default     = "cmtr-959pompn-template"
 }
 
 # variable "iam_instance_profile_name" {
@@ -60,6 +60,12 @@ variable "public_subnet_id1" {
 
 variable "public_subnet_id2" {
   description = "Public Subnet id 2"
+  type        = string
+  default     = ""
+}
+
+variable "public_subnet_id3" {
+  description = "Public Subnet id 3"
   type        = string
   default     = ""
 }

@@ -28,4 +28,5 @@ module "application" {
   load_balancer_name       = var.load_balancer_name
   public_subnet_id1        = tolist(module.network.public_subnet_ids)[0]
   public_subnet_id2        = tolist(module.network.public_subnet_ids)[1]
+  public_subnet_id3        = tolist(module.network.public_subnet_ids)[2]
 }

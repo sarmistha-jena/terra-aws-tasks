@@ -40,7 +40,7 @@ resource "aws_autoscaling_group" "asg" {
   max_size         = 2
   min_size         = 2
 
-  vpc_zone_identifier = [var.public_subnet_id1, var.public_subnet_id2]
+  vpc_zone_identifier = [var.public_subnet_id1, var.public_subnet_id2, var.public_subnet_id3]
   launch_template {
     id      = aws_launch_template.aws_launch_template_lt.id
     version = "$Latest"
@@ -104,7 +104,7 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.sg_lb_http_inbound_id]
-  subnets            = [var.public_subnet_id1, var.public_subnet_id2]
+  subnets            = [var.public_subnet_id1, var.public_subnet_id2, var.public_subnet_id3]
 
   tags = {
     Terraform = true

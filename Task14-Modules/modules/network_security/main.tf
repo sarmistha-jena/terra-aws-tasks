@@ -19,12 +19,12 @@ resource "aws_security_group" "ssh_sg" {
   #   cidr_blocks = var.allowed_ip_range
   # }
 
-  # egress {
-  #   from_port   = 0
-  #   to_port     = 0
-  #   protocol    = "-1"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = {
     Project = var.project_id
@@ -78,6 +78,13 @@ resource "aws_security_group" "private_http_sg" {
   name        = var.private_http_security_group_name
   description = "Allow HTTP (8080) and ICMP from allowed IPs"
   vpc_id      = var.vpc_id
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = {
     Project = var.project_id
