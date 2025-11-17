@@ -1,0 +1,6 @@
+
+add bucket policy with read permission
+// aws s3api put-bucket-policy --bucket cmtr-959pompn-s3-ss-bucket-749164 --policy file://s3-bucket-policy.json
+
+set bucket for website configuration
+// aws s3api put-bucket-website --bucket cmtr-959pompn-s3-ss-bucket-749164 --website-configuration file://website.json

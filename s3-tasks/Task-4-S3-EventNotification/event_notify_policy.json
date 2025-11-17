@@ -1,0 +1,16 @@
+{
+    "QueueConfigurations": [
+      {
+        "Id": "SendToSQS",
+        "QueueArn": "arn:aws:sqs:us-east-1:619071330523:cmtr-959pompn-s3-snlt-queue",
+        "Events": ["s3:ObjectCreated:*"],
+        "Filter": {
+          "Key": {
+            "FilterRules": [
+              { "Name": "prefix", "Value": "input/" }
+            ]
+          }
+        }
+      }
+    ]
+  }

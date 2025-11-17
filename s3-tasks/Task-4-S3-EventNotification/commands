@@ -1,0 +1,27 @@
+S3 -> SQS -> Lambda -> Output in another S3
+
+aws s3api put-bucket-notification-configuration \
+  --bucket cmtr-959pompn-s3-snlt-bucket-970186 \
+  --notification-configuration file://event_notify_policy.json
+
+
+
+  aws sqs set-queue-attributes \
+  --queue-url "https://sqs.us-east-1.amazonaws.com/619071330523/cmtr-959pompn-s3-snlt-queue" \
+  --attributes "{\"Policy\": \"$(cat sqs-policy.json | sed 's/\"/\\\"/g')\"}"
+
+
+Configure SQS → Lambda Trigger
+
+You must give SQS permission to invoke the Lambda:
+
+aws lambda create-event-source-mapping \
+  --function-name cmtr-959pompn-s3-snlt-lambda \
+  --batch-size 10 \
+  --event-source-arn "arn:aws:sqs:us-east-1:619071330523:cmtr-959pompn-s3-snlt-queue"
+
+
+Check status:
+
+aws lambda list-event-source-mappings \
+  --function-name cmtr-959pompn-s3-snlt-lambda
